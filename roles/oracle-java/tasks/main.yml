@@ -18,7 +18,8 @@
   sudo: yes
 
 - name: Wizardry to bypass the Oracle License File prompt
-  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  #shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
   sudo: yes
 
 - name: Install Oracle Java 8
