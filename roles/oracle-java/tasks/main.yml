@@ -24,7 +24,7 @@
 
 - name: Install Oracle Java 8
   apt: pkg=openjdk-8-jdk
-  with_items:
+  allow_unauthenticated: yes
   when: oracle_java_version == 8
   sudo: yes
 
