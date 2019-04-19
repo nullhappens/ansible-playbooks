@@ -17,17 +17,14 @@
   when: oracle_java_version == 10
   sudo: yes
 
-- name: Wizardry to bypass the Oracle License File prompt
-  #shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
-  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
-  sudo: yes
+  # - name: Wizardry to bypass the Oracle License File prompt
+  #   #shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  #   debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+  #   sudo: yes
 
 - name: Install Oracle Java 8
-  apt: name={{item}} state=latest
+  apt: pkg=openjdk-8-jdk
   with_items:
-    - oracle-java-8-installer
-    - ca-certificates
-    - oracle-java-set-default
   when: oracle_java_version == 8
   sudo: yes
 
